@@ -1,12 +1,8 @@
 :root{
   --bg: #0a0c0c;
-
   --text: rgba(245,245,245,0.92);
   --muted: rgba(245,245,245,0.68);
-
   --gold: rgba(255,235,185,0.92);
-  --gold-weak: rgba(255,235,185,0.16);
-
   --border: rgba(255,255,255,0.08);
   --panel: rgba(10,12,12,0.55);
 }
@@ -18,9 +14,10 @@ body{
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-/* фон */
+/* Сплошной фон */
 .bg{
   position: fixed;
   inset: 0;
@@ -28,15 +25,30 @@ body{
   z-index: 0;
 }
 
-/* слой блика */
-.sheen{
+/* SVG фон */
+.svg-container{
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  mix-blend-mode: screen;
-  filter: saturate(1.35) contrast(1.06);
-  opacity: 1;
+}
+
+.bg-svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  /* делаем “дороже”: мягче и не слишком ярко */
+  opacity: 0.95;
+
+  /* важно: SVG не должен сам заливать фон */
+  background: transparent;
+}
+
+/* Контент поверх */
+.page{
+  position: relative;
+  z-index: 2;
 }
 
 /* контейнер */
@@ -68,12 +80,8 @@ body{
   text-decoration: none;
   font-size: 14px;
 }
-
 .toplink:hover{ color: var(--gold); }
-
-.topbar-row .toplink:last-child{
-  justify-self: end;
-}
+.topbar-row .toplink:last-child{ justify-self: end; }
 
 .logo{
   text-decoration: none;
@@ -89,11 +97,7 @@ body{
   color: rgba(245,245,245,0.90);
   font-size: 26px;
 }
-
-.logo-text--thin{
-  font-size: 26px;
-  opacity: 0.9;
-}
+.logo-text--thin{ opacity: 0.9; }
 
 .subnav{
   display: flex;
@@ -101,30 +105,19 @@ body{
   gap: 26px;
   padding-top: 10px;
 }
-
 .subnav a{
   color: rgba(245,245,245,0.78);
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 0.02em;
 }
+.subnav a:hover{ color: var(--gold); }
 
-.subnav a:hover{
-  color: var(--gold);
-}
-
-/* страница */
-.page{
-  position: relative;
-  z-index: 2;
-}
-
-/* HERO как в примере */
+/* HERO */
 .hero{
   padding: 44px 0 30px;
   text-align: center;
 }
-
 .hero-title{
   margin: 18px 0 10px;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -134,7 +127,6 @@ body{
   line-height: 0.98;
   font-size: clamp(44px, 7vw, 92px);
 }
-
 .hero-lead{
   margin: 0 auto 18px;
   max-width: 64ch;
@@ -142,7 +134,6 @@ body{
   line-height: 1.55;
   font-size: 15px;
 }
-
 .hero-actions{
   display: flex;
   gap: 12px;
@@ -163,35 +154,27 @@ body{
   text-transform: uppercase;
   border: 1px solid transparent;
 }
-
 .btn-primary{
   color: #0a0c0c;
   background: var(--gold);
   border-color: rgba(255,235,185,0.20);
 }
-
-.btn-primary:hover{
-  background: rgba(255,235,185,1);
-}
+.btn-primary:hover{ background: rgba(255,235,185,1); }
 
 .btn-ghost{
   color: rgba(245,245,245,0.86);
   background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.10);
 }
+.btn-ghost:hover{ background: rgba(255,255,255,0.06); }
 
-.btn-ghost:hover{
-  background: rgba(255,255,255,0.06);
-}
-
-/* Карточки как на рефе */
+/* карточки */
 .cards{
   padding: 22px 0 40px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-
 .cat-card{
   position: relative;
   border-radius: 18px;
@@ -200,7 +183,6 @@ body{
   min-height: 520px;
   background: rgba(255,255,255,0.03);
 }
-
 .cat-img{
   position: absolute;
   inset: 0;
@@ -210,17 +192,14 @@ body{
   transform: scale(1.02);
   filter: contrast(1.05) brightness(0.85);
 }
-
 .cat-overlay{
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom,
-      rgba(10,12,12,0.80) 0%,
-      rgba(10,12,12,0.35) 35%,
-      rgba(10,12,12,0.85) 100%);
+  background: linear-gradient(to bottom,
+    rgba(10,12,12,0.80) 0%,
+    rgba(10,12,12,0.35) 35%,
+    rgba(10,12,12,0.85) 100%);
 }
-
 .cat-content{
   position: absolute;
   inset: 0;
@@ -230,7 +209,6 @@ body{
   gap: 12px;
   padding: 26px;
 }
-
 .cat-title{
   margin: 0;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -239,7 +217,6 @@ body{
   font-size: 40px;
   color: rgba(245,245,245,0.92);
 }
-
 .btn-card{
   padding: 12px 16px;
   border-radius: 12px;
@@ -247,18 +224,14 @@ body{
   background: rgba(10,12,12,0.55);
   border-color: rgba(255,255,255,0.12);
 }
-
 .btn-card:hover{
   background: rgba(10,12,12,0.68);
   border-color: rgba(255,235,185,0.22);
   color: rgba(255,235,185,0.95);
 }
 
-/* Контакты */
-.contacts{
-  padding: 14px 0 60px;
-}
-
+/* контакты */
+.contacts{ padding: 14px 0 60px; }
 .contact-card{
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -267,7 +240,6 @@ body{
   -webkit-backdrop-filter: blur(10px);
   padding: 22px;
 }
-
 .section-title{
   margin: 0 0 8px;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -275,19 +247,16 @@ body{
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-
 .section-text{
   margin: 0 0 16px;
   color: var(--muted);
   line-height: 1.55;
 }
-
 .contact-grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
-
 .contact-item{
   display: block;
   text-decoration: none;
@@ -297,19 +266,16 @@ body{
   background: rgba(255,255,255,0.04);
   color: rgba(245,245,245,0.9);
 }
-
 .contact-item:hover{
   border-color: rgba(255,235,185,0.20);
   background: rgba(255,255,255,0.06);
 }
-
 .contact-label{
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
-
 .contact-value{
   margin-top: 6px;
   font-size: 14px;
@@ -317,19 +283,13 @@ body{
 }
 
 /* футер */
-.footer{
-  padding: 26px 0 40px;
-}
-.footer-line{
-  height: 1px;
-  background: var(--border);
-  margin-bottom: 14px;
-}
+.footer{ padding: 26px 0 40px; }
+.footer-line{ height: 1px; background: var(--border); margin-bottom: 14px; }
 .footer-row{
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
 }
 .muted{ color: var(--muted); }
 
@@ -338,11 +298,25 @@ body{
   .cards{ grid-template-columns: 1fr; }
   .cat-card{ min-height: 460px; }
   .contact-grid{ grid-template-columns: 1fr; }
-  .subnav{ gap: 18px; }
 }
-
 @media (max-width: 520px){
   .container{ width: min(1120px, calc(100% - 28px)); }
   .logo-text{ font-size: 22px; }
   .cat-title{ font-size: 34px; }
+}
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: 16px;
+  padding: 40px 0;
+}
+
+.gallery img{
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
 }
