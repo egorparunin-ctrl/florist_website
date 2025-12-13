@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Цветочная мастерская</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- Сплошной фон -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Блик по маске (только вензеля) -->
+  <svg class="sheen" id="sheenSvg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <pattern id="tilePattern" patternUnits="userSpaceOnUse" width="1500" height="1500">
+        <image href="./back_layout.svg" width="1500" height="1500" preserveAspectRatio="none" />
+      </pattern>
+
+      <mask id="ornamentMask" maskUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="100%" height="100%" fill="url(#tilePattern)"/>
+      </mask>
+
+      <!-- Один луч: мягкий + металлическая сердцевина по центру -->
+      <linearGradient id="sheenGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"    stop-color="rgba(255,235,185,0)" />
+        <stop offset="42%"   stop-color="rgba(255,235,185,0)" />
+        <stop offset="49%"   stop-color="rgba(255,220,140,0.35)" />
+
+        <stop offset="49.6%" stop-color="rgba(255,240,200,0.55)" />
+        <stop offset="50%"   stop-color="rgba(255,255,245,0.95)" />
+        <stop offset="50.4%" stop-color="rgba(255,240,200,0.55)" />
+
+        <stop offset="51%"   stop-color="rgba(255,220,140,0.35)" />
+        <stop offset="58%"   stop-color="rgba(255,235,185,0)" />
+        <stop offset="100%"  stop-color="rgba(255,235,185,0)" />
+      </linearGradient>
+    </defs>
+
+    <g mask="url(#ornamentMask)">
+      <rect id="sheenRect" x="-6000" y="-6000" width="14000" height="14000" fill="url(#sheenGrad)"></rect>
+    </g>
+  </svg>
+
+  <!-- Шапка как в примере: слева/центр/справа -->
+  <header class="topbar">
+    <div class="container topbar-row">
+      <a class="toplink" href="#home">Главная</a>
+
+      <a class="logo" href="#home" aria-label="На главную">
+        <span class="logo-text">ЦВЕТОЧНАЯ</span>
+        <span class="logo-text logo-text--thin">МАСТЕРСКАЯ</span>
+      </a>
+
+      <a class="toplink" href="#contacts">Контакты</a>
+    </div>
+
+    <nav class="subnav container">
+      <a href="#bouquets">Букеты</a>
+      <a href="#bridal">Свадебные</a>
+      <a href="#arrangements">Композиции</a>
+    </nav>
+  </header>
+
+  <main id="home" class="page">
+    <!-- HERO -->
+    <section class="hero container">
+      <h1 class="hero-title">
+        КРАСИВЫЕ<br/>
+        ЦВЕТЫ
+      </h1>
+
+      <p class="hero-lead">
+        Букеты и композиции на заказ. Доставка по городу, аккуратная упаковка, цветы “как на картинке”.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#bouquets">ЗАКАЗАТЬ</a>
+        <a class="btn btn-ghost" href="#contacts">НАПИСАТЬ</a>
+      </div>
+    </section>
+
+    <!-- 3 КАРТОЧКИ КАТЕГОРИЙ -->
+    <section class="cards container">
+      <article id="bouquets" class="cat-card">
+        <!-- Замени src на свои фото -->
+        <img class="cat-img" src="./img/bouquets.jpg" alt="Букеты" />
+        <div class="cat-overlay"></div>
+
+        <div class="cat-content">
+          <h3 class="cat-title">Букеты</h3>
+          <a class="btn btn-card" href="#contacts">ЗАКАЗАТЬ</a>
+        </div>
+      </article>
+
+      <article id="bridal" class="cat-card">
+        <img class="cat-img" src="./img/bridal.jpg" alt="Свадебные букеты" />
+        <div class="cat-overlay"></div>
+
+        <div class="cat-content">
+          <h3 class="cat-title">Свадебные</h3>
+          <a class="btn btn-card" href="#contacts">ЗАКАЗАТЬ</a>
+        </div>
+      </article>
+
+      <article id="arrangements" class="cat-card">
+        <img class="cat-img" src="./img/arrangements.jpg" alt="Композиции" />
+        <div class="cat-overlay"></div>
+
+        <div class="cat-content">
+          <h3 class="cat-title">Композиции</h3>
+          <a class="btn btn-card" href="#contacts">ЗАКАЗАТЬ</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Блок контактов (минимальный, чтобы было куда вести кнопки) -->
+    <section id="contacts" class="contacts container">
+      <div class="contact-card">
+        <h2 class="section-title">Контакты</h2>
+        <p class="section-text">
+          Напиши в Telegram/WhatsApp или позвони — подберём цветы и бюджет.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-item" href="tel:+70000000000">
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">+7 (000) 000-00-00</div>
+          </a>
+
+          <a class="contact-item" href="#">
+            <div class="contact-label">Telegram</div>
+            <div class="contact-value">@username</div>
+          </a>
+
+          <a class="contact-item" href="#">
+            <div class="contact-label">Адрес</div>
+            <div class="contact-value">Улица, дом</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <div class="footer-line"></div>
+      <div class="footer-row">
+        <div class="muted">© 2025 • Цветочная мастерская</div>
+        <div class="muted">Работаем ежедневно</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./sheen.js"></script>
+</body>
+</html>
