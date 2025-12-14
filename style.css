@@ -196,9 +196,9 @@ body{
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-    rgba(10,12,12,0.80) 0%,
-    rgba(10,12,12,0.35) 35%,
-    rgba(10,12,12,0.85) 100%);
+    rgba(10,12,12,0.2) 0%,
+    rgba(10,12,12,0) 35%,
+    rgba(10,12,12,0.3) 100%);
 }
 .cat-content{
   position: absolute;
@@ -457,28 +457,4 @@ body{
 @media (max-width: 520px){
   .brand-logo{ width: 60px; height: 60px; }
   .page-title{ font-size: 14px; letter-spacing: 0.06em; }
-}
-.brand-left{
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.brand-home{
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.brand-back{
-  font-size: 12px;
-  text-decoration: none;
-  color: rgba(245,245,245,0.65);
-  letter-spacing: 0.02em;
-  padding-left: 2px;
-}
-
-.brand-back:hover{
-  color: rgba(255,235,185,0.9);
 }
