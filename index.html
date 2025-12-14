@@ -86,14 +86,19 @@
 	</div>
 
   <header class="topbar">
-    <div class="container topbar-row">
-      <span></span>
-      <div class="logo">
-        <span class="logo-text">BLOOM</span>
-        <span class="logo-text logo-text--thin">BOOM</span>
-      </div>
-      <a class="toplink" href="#contacts">Контакты</a>
-    </div>
+   <div class="container topbar-row topbar-row--brand">
+ <div class="brand-left">
+  <a class="brand-home" href="./index.html" aria-label="На главную">
+    <img class="brand-logo" src="./img/logo.svg" alt="Логотип">
+  </a>
+
+  <a class="brand-back" href="./index.html">← Назад</a>
+</div>
+  <div class="page-title">Главная</div>
+
+  <a class="toplink" href="#contacts">Контакты</a>
+</div>
+
   </header>
 
   <main class="page">
@@ -139,11 +144,13 @@
       </a>
     </section>
 
-    <div class="contact-card">
+    <section id="contacts" class="contacts container">
+	<div class="contact-card">
     <h2 class="section-title">Контакты</h2>
     <p class="section-text">
       Напиши удобным способом — быстро соберём букет под бюджет и повод.
     </p>
+	
 
     <div class="contact-grid">
       <a class="contact-item" href="https://t.me/bloomboomnsk" target="_blank" rel="noopener">
@@ -158,6 +165,7 @@
 
      </div>
   </div>
+  </section>
   </main>
 
   <script src="./sheen.js"></script>
