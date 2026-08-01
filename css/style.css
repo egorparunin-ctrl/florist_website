@@ -1088,6 +1088,19 @@ body::after {
     max-width: 100vw;
   }
 }
+.contact-photo {
+  width: 65%;
+  height: 65%;
+  object-fit: cover;
+}
+
+.contact-photo-one {
+  object-position: center 35%;
+}
+
+.contact-photo-two {
+  object-position: center 45%;
+}
 
 @supports not (overflow: clip) {
   html,
