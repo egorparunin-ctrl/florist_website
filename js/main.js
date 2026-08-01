@@ -175,6 +175,7 @@ let motionFrame = 0;
 
 function updateMotion() {
   const viewportCenter = window.innerHeight / 2;
+  const compactViewport = window.innerWidth <= 820;
   const parallaxItems = document.querySelectorAll('[data-parallax]');
   const imageItems = document.querySelectorAll('[data-parallax-image]');
   const ribbon = document.querySelector('[data-scroll-track]');
@@ -183,8 +184,9 @@ function updateMotion() {
     const speed = Number(item.dataset.parallax || 0);
     const rect = item.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
-    const max = item.classList.contains('hero-glow') ? 90 : 58;
-    const offset = Math.max(-max, Math.min(max, distance * speed));
+    const max = compactViewport ? 16 : (item.classList.contains('hero-glow') ? 90 : 58);
+    const effectiveSpeed = compactViewport ? speed * 0.28 : speed;
+    const offset = Math.max(-max, Math.min(max, distance * effectiveSpeed));
     item.style.translate = `0 ${offset}px`;
   });
 
@@ -192,11 +194,13 @@ function updateMotion() {
     const speed = Number(image.dataset.parallaxImage || 0);
     const rect = image.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
-    const shift = Math.max(-34, Math.min(34, distance * speed));
+    const limit = compactViewport ? 12 : 34;
+    const effectiveSpeed = compactViewport ? speed * 0.3 : speed;
+    const shift = Math.max(-limit, Math.min(limit, distance * effectiveSpeed));
     image.style.setProperty('--image-shift', `${shift}px`);
   });
 
-  if (ribbon) {
+  if (ribbon && !compactViewport) {
     const rect = ribbon.parentElement.getBoundingClientRect();
     const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
     const shift = -Math.max(0, Math.min(1, progress)) * Math.min(window.innerWidth * .55, 720);
