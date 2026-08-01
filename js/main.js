@@ -1,28 +1,25 @@
 'use strict';
 
-// Здесь находится список всех работ.
-// Чтобы позже добавить новую фотографию, достаточно добавить ещё один объект
-// по такому же образцу и положить файл в указанную папку.
 const works = [
-  { src: 'img/portfolio/mixed/sunflower-bouquet.png', title: 'Солнечный характер', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/floral-bust-art.png', title: 'Цветочный арт-объект', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/blue-white-vertical-bouquet.png', title: 'Бело-голубая вертикаль', category: 'mixed wedding', categoryLabel: 'Сборные / свадебные' },
-  { src: 'img/portfolio/arrangements/garden-basket-arrangement.png', title: 'Садовая корзина', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/wedding/pastel-wedding-bouquet.png', title: 'Нежная классика', category: 'wedding', categoryLabel: 'Свадебные букеты' },
-  { src: 'img/portfolio/arrangements/pink-flower-bag.png', title: 'Розовая сумочка', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/airy-branch-bouquet.png', title: 'Воздух и движение', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/light-flower-bag.png', title: 'Весенний свет', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/large-white-lilac-bouquet.png', title: 'Большой бело-сиреневый букет', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/pastel-flower-basket.png', title: 'Пастельная корзина', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/open-stem-bouquet.png', title: 'Открытая форма', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/asymmetric-planter-arrangement.png', title: 'Асимметричная композиция', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/peach-green-bouquet.png', title: 'Персик и зелень', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/white-green-basket.png', title: 'Бело-зелёная корзина', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/lilac-bouquet.png', title: 'Сиреневое настроение', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/arrangements/white-bust-arrangement.png', title: 'Скульптурная композиция', category: 'arrangements', categoryLabel: 'Композиции' },
-  { src: 'img/portfolio/mixed/powder-pink-bouquet.png', title: 'Пудровая классика', category: 'mixed', categoryLabel: 'Сборные букеты' },
-  { src: 'img/portfolio/mono/blue-hydrangea-mono.png', title: 'Синяя гортензия', category: 'mono', categoryLabel: 'Монобукеты' },
-  { src: 'img/portfolio/mixed/red-rose-bouquet.png', title: 'Красные розы', category: 'mixed mono', categoryLabel: 'Сборные / монобукеты' }
+  { src: 'img/portfolio/mixed/sunflower-bouquet.webp', title: 'Солнечный характер', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/floral-bust-art.webp', title: 'Цветочный арт-объект', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/blue-white-vertical-bouquet.webp', title: 'Бело-голубая вертикаль', category: 'mixed wedding', categoryLabel: 'Сборные / свадебные' },
+  { src: 'img/portfolio/arrangements/garden-basket-arrangement.webp', title: 'Садовая корзина', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/wedding/pastel-wedding-bouquet.webp', title: 'Нежная классика', category: 'wedding', categoryLabel: 'Свадебные букеты' },
+  { src: 'img/portfolio/arrangements/pink-flower-bag.webp', title: 'Розовая сумочка', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/airy-branch-bouquet.webp', title: 'Воздух и движение', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/light-flower-bag.webp', title: 'Весенний свет', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/large-white-lilac-bouquet.webp', title: 'Большой бело-сиреневый букет', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/pastel-flower-basket.webp', title: 'Пастельная корзина', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/open-stem-bouquet.webp', title: 'Открытая форма', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/asymmetric-planter-arrangement.webp', title: 'Асимметричная композиция', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/peach-green-bouquet.webp', title: 'Персик и зелень', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/white-green-basket.webp', title: 'Бело-зелёная корзина', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/lilac-bouquet.webp', title: 'Сиреневое настроение', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/arrangements/white-bust-arrangement.webp', title: 'Скульптурная композиция', category: 'arrangements', categoryLabel: 'Композиции' },
+  { src: 'img/portfolio/mixed/powder-pink-bouquet.webp', title: 'Пудровая классика', category: 'mixed', categoryLabel: 'Сборные букеты' },
+  { src: 'img/portfolio/mono/blue-hydrangea-mono.webp', title: 'Синяя гортензия', category: 'mono', categoryLabel: 'Монобукеты' },
+  { src: 'img/portfolio/mixed/red-rose-bouquet.webp', title: 'Красные розы', category: 'mixed mono', categoryLabel: 'Сборные / монобукеты' }
 ];
 
 const portfolioGrid = document.querySelector('#portfolio-grid');
@@ -48,6 +45,7 @@ function createPortfolio() {
     image.width = 1254;
     image.height = 1254;
     image.loading = 'lazy';
+    image.decoding = 'async';
 
     button.append(image);
     fragment.append(button);
@@ -88,7 +86,6 @@ categoryButtons.forEach((button) => {
   });
 });
 
-// Просмотр фотографии на весь экран.
 const lightbox = document.querySelector('#lightbox');
 const lightboxImage = document.querySelector('#lightbox-image');
 const lightboxTitle = document.querySelector('#lightbox-title');
@@ -160,7 +157,6 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight') moveLightbox(1);
 });
 
-// Плавное появление блоков.
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -172,8 +168,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-// Лёгкий параллакс. На слабых устройствах и при включённом уменьшении
-// анимации этот эффект автоматически отключается.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
 let ticking = false;
@@ -200,7 +194,6 @@ if (!reduceMotion && window.innerWidth > 700) {
   updateParallax();
 }
 
-// Мобильное меню.
 const menuButton = document.querySelector('.menu-button');
 const siteNav = document.querySelector('.site-nav');
 
@@ -217,5 +210,4 @@ siteNav.addEventListener('click', (event) => {
   }
 });
 
-// Текущий год в подвале.
 document.querySelector('#current-year').textContent = String(new Date().getFullYear());
