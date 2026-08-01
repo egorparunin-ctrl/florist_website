@@ -37,6 +37,7 @@ function createPortfolio() {
     button.dataset.categories = work.category;
     button.dataset.title = work.title;
     button.dataset.index = String(index);
+    button.dataset.parallax = String(index % 3 === 0 ? -0.008 : index % 3 === 1 ? 0.007 : -0.004);
     button.setAttribute('aria-label', `Открыть фотографию: ${work.title}`);
 
     const image = document.createElement('img');
@@ -46,6 +47,7 @@ function createPortfolio() {
     image.height = 1254;
     image.loading = 'lazy';
     image.decoding = 'async';
+    image.dataset.parallaxImage = String(index % 2 === 0 ? 0.035 : -0.03);
 
     button.append(image);
     fragment.append(button);
@@ -169,29 +171,80 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
-let ticking = false;
+let motionFrame = 0;
 
-function updateParallax() {
-  const scrollY = window.scrollY;
+function updateMotion() {
+  const viewportCenter = window.innerHeight / 2;
+  const parallaxItems = document.querySelectorAll('[data-parallax]');
+  const imageItems = document.querySelectorAll('[data-parallax-image]');
+  const ribbon = document.querySelector('[data-scroll-track]');
+
   parallaxItems.forEach((item) => {
     const speed = Number(item.dataset.parallax || 0);
     const rect = item.getBoundingClientRect();
-    const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
-    const offset = Math.max(-45, Math.min(45, distanceFromCenter * speed));
+    const distance = rect.top + rect.height / 2 - viewportCenter;
+    const max = item.classList.contains('hero-glow') ? 90 : 58;
+    const offset = Math.max(-max, Math.min(max, distance * speed));
     item.style.translate = `0 ${offset}px`;
   });
-  ticking = false;
+
+  imageItems.forEach((image) => {
+    const speed = Number(image.dataset.parallaxImage || 0);
+    const rect = image.getBoundingClientRect();
+    const distance = rect.top + rect.height / 2 - viewportCenter;
+    const shift = Math.max(-34, Math.min(34, distance * speed));
+    image.style.setProperty('--image-shift', `${shift}px`);
+  });
+
+  if (ribbon) {
+    const rect = ribbon.parentElement.getBoundingClientRect();
+    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+    const shift = -Math.max(0, Math.min(1, progress)) * Math.min(window.innerWidth * .55, 720);
+    ribbon.style.transform = `translate3d(${shift}px, 0, 0)`;
+  }
+
+  document.body.style.setProperty('--ambient-shift', `${Math.min(window.scrollY * .035, 110)}px`);
+  motionFrame = 0;
 }
 
-if (!reduceMotion && window.innerWidth > 700) {
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }, { passive: true });
-  updateParallax();
+function requestMotionUpdate() {
+  if (!motionFrame) motionFrame = window.requestAnimationFrame(updateMotion);
+}
+
+if (!reduceMotion) {
+  window.addEventListener('scroll', requestMotionUpdate, { passive: true });
+  window.addEventListener('resize', requestMotionUpdate, { passive: true });
+  updateMotion();
+
+  const heroTiltZone = document.querySelector('[data-tilt-zone]');
+  if (heroTiltZone && window.matchMedia('(pointer: fine)').matches) {
+    heroTiltZone.addEventListener('pointermove', (event) => {
+      const rect = heroTiltZone.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      heroTiltZone.style.setProperty('--tilt-y', `${x * 4.5}deg`);
+      heroTiltZone.style.setProperty('--tilt-x', `${y * -4.5}deg`);
+    });
+    heroTiltZone.addEventListener('pointerleave', () => {
+      heroTiltZone.style.setProperty('--tilt-y', '0deg');
+      heroTiltZone.style.setProperty('--tilt-x', '0deg');
+    });
+  }
+
+  document.querySelectorAll('[data-tilt-card]').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      card.style.setProperty('--hover-x', `${x * 8}px`);
+      card.style.setProperty('--hover-y', `${y * 8}px`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--hover-x', '0px');
+      card.style.setProperty('--hover-y', '0px');
+    });
+  });
 }
 
 const menuButton = document.querySelector('.menu-button');
