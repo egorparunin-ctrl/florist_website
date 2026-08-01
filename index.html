@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Авторские букеты, композиции и свадебная флористика Леры в Новосибирске.">
+  <meta name="theme-color" content="#f7f2ea">
+  <title>LeraFlo — портфолио флориста</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#portfolio">Перейти к работам</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="LeraFlo — на главную">
+      <span class="brand-mark" aria-hidden="true">✽</span>
+      <span class="brand-name">LeraFlo</span>
+      <span class="brand-note">цветы с характером</span>
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Открыть меню</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <a href="#featured">Избранное</a>
+      <a href="#categories">Категории</a>
+      <a href="#portfolio">Все работы</a>
+      <a href="#about">О Лере</a>
+      <a class="nav-action" href="https://t.me/Bloom_Boom_nsk" target="_blank" rel="noopener">Написать</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one" data-parallax="0.06"></div>
+      <div class="hero-glow hero-glow-two" data-parallax="-0.04"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Авторская флористика · Новосибирск</p>
+        <h1 id="hero-title">Цветы, которые<br><em>говорят за вас</em></h1>
+        <p class="hero-text">Лера создаёт букеты и композиции с живой формой, необычными сочетаниями и вниманием к настроению каждого заказа.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#featured">Смотреть работы</a>
+          <a class="button button-secondary" href="https://t.me/Bloom_Boom_nsk" target="_blank" rel="noopener">Обсудить заказ</a>
+        </div>
+        <ul class="hero-facts" aria-label="Основные направления">
+          <li><strong>Букеты</strong><span>для важных поводов</span></li>
+          <li><strong>Композиции</strong><span>с характером</span></li>
+          <li><strong>Свадьбы</strong><span>в деталях</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay" aria-label="Авторский букет Леры">
+        <div class="hero-frame" data-parallax="0.035">
+          <img src="img/portfolio/mixed/airy-branch-bouquet.png" alt="Воздушный авторский букет с ветвями" width="1254" height="1254" fetchpriority="high">
+        </div>
+        <div class="hero-card hero-card-top" data-parallax="-0.08">
+          <span>Авторская форма</span>
+          <strong>воздух · линии · движение</strong>
+        </div>
+        <div class="hero-card hero-card-bottom" data-parallax="0.09">
+          <span>Каждая работа</span>
+          <strong>собрана вручную</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured section" id="featured" aria-labelledby="featured-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">С чего начать знакомство</p>
+          <h2 id="featured-title">Избранные работы</h2>
+        </div>
+        <p>Авторские букеты, воздушные формы, цветочные корзины и композиции для особенных моментов.</p>
+      </div>
+
+      <div class="featured-grid">
+        <button class="work-card work-card-wide reveal" type="button" data-image="img/portfolio/mixed/sunflower-bouquet.png" data-title="Букет с подсолнухами" data-category="Сборные букеты">
+          <img src="img/portfolio/mixed/sunflower-bouquet.png" alt="Яркий сборный букет с подсолнухами" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Сборные букеты</small><strong>Солнечный характер</strong></span>
+        </button>
+
+        <button class="work-card work-card-tall reveal" type="button" data-image="img/portfolio/arrangements/floral-bust-art.png" data-title="Цветочный арт-объект" data-category="Композиции">
+          <img src="img/portfolio/arrangements/floral-bust-art.png" alt="Концептуальная цветочная композиция в форме бюста" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Композиции</small><strong>Цветочный арт-объект</strong></span>
+        </button>
+
+        <button class="work-card reveal" type="button" data-image="img/portfolio/arrangements/garden-basket-arrangement.png" data-title="Садовая корзина" data-category="Композиции">
+          <img src="img/portfolio/arrangements/garden-basket-arrangement.png" alt="Сложная садовая композиция в корзине" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Композиции</small><strong>Садовая корзина</strong></span>
+        </button>
+
+        <button class="work-card reveal" type="button" data-image="img/portfolio/arrangements/pink-flower-bag.png" data-title="Розовая сумочка" data-category="Композиции">
+          <img src="img/portfolio/arrangements/pink-flower-bag.png" alt="Яркая розовая цветочная композиция в сумочке" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Композиции</small><strong>Розовая сумочка</strong></span>
+        </button>
+
+        <button class="work-card work-card-wide reveal" type="button" data-image="img/portfolio/mixed/blue-white-vertical-bouquet.png" data-title="Бело-голубая вертикаль" data-category="Сборные букеты">
+          <img src="img/portfolio/mixed/blue-white-vertical-bouquet.png" alt="Воздушный бело-голубой вертикальный букет" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Сборные букеты</small><strong>Бело-голубая вертикаль</strong></span>
+        </button>
+
+        <button class="work-card reveal" type="button" data-image="img/portfolio/wedding/pastel-wedding-bouquet.png" data-title="Пастельный свадебный букет" data-category="Свадебные букеты">
+          <img src="img/portfolio/wedding/pastel-wedding-bouquet.png" alt="Нежный пастельный свадебный букет" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Свадебные букеты</small><strong>Нежная классика</strong></span>
+        </button>
+
+        <button class="work-card reveal" type="button" data-image="img/portfolio/arrangements/light-flower-bag.png" data-title="Светлая цветочная сумочка" data-category="Композиции">
+          <img src="img/portfolio/arrangements/light-flower-bag.png" alt="Светлая бело-зелёная цветочная композиция в сумочке" width="1254" height="1254" loading="lazy">
+          <span class="work-caption"><small>Композиции</small><strong>Весенний свет</strong></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="categories section" id="categories" aria-labelledby="categories-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Найти нужное быстрее</p>
+          <h2 id="categories-title">Четыре направления</h2>
+        </div>
+        <p>Выберите направление, чтобы посмотреть подходящие работы и найти идею для своего заказа.</p>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card reveal" type="button" data-filter-target="mixed">
+          <img src="img/portfolio/mixed/sunflower-bouquet.png" alt="Обложка категории сборных букетов" width="1254" height="1254" loading="lazy">
+          <span><small>Авторские и классические</small><strong>Сборные букеты</strong><i>Смотреть →</i></span>
+        </button>
+        <button class="category-card reveal" type="button" data-filter-target="mono">
+          <img src="img/portfolio/mono/blue-hydrangea-mono.png" alt="Обложка категории монобукетов" width="1254" height="1254" loading="lazy">
+          <span><small>Один цветок — сильный образ</small><strong>Монобукеты</strong><i>Смотреть →</i></span>
+        </button>
+        <button class="category-card reveal" type="button" data-filter-target="arrangements">
+          <img src="img/portfolio/arrangements/floral-bust-art.png" alt="Обложка категории цветочных композиций" width="1254" height="1254" loading="lazy">
+          <span><small>Корзины, сумочки и арт-объекты</small><strong>Композиции</strong><i>Смотреть →</i></span>
+        </button>
+        <button class="category-card reveal" type="button" data-filter-target="wedding">
+          <img src="img/portfolio/wedding/pastel-wedding-bouquet.png" alt="Обложка категории свадебных букетов" width="1254" height="1254" loading="lazy">
+          <span><small>Нежные букеты для особенного дня</small><strong>Свадебные букеты</strong><i>Смотреть →</i></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="portfolio section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Все работы</p>
+          <h2 id="portfolio-title">Портфолио</h2>
+        </div>
+        <p>Откройте фотографию крупнее или выберите нужное направление с помощью фильтров.</p>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="Фильтр портфолио">
+        <button class="filter-button is-active" type="button" data-filter="all">Все работы</button>
+        <button class="filter-button" type="button" data-filter="mixed">Сборные букеты</button>
+        <button class="filter-button" type="button" data-filter="mono">Монобукеты</button>
+        <button class="filter-button" type="button" data-filter="arrangements">Композиции</button>
+        <button class="filter-button" type="button" data-filter="wedding">Свадебные</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolio-grid"></div>
+      <p class="portfolio-empty" hidden>В этой категории пока нет работ.</p>
+    </section>
+
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="about-art reveal" data-parallax="0.025">
+        <img src="img/about/lera-about.jpg" alt="Флорист Лера с авторским букетом" width="1536" height="2048" loading="lazy">
+        <span class="about-stamp">собрано<br>с любовью</span>
+      </div>
+      <div class="about-copy reveal">
+        <p class="eyebrow">О флористе</p>
+        <h2 id="about-title">Привет, я Лера</h2>
+        <p class="about-lead">Для меня флористика — это не раскладывание цветов по кругу, а работа с линиями, воздухом, ритмом и характером.</p>
+        <p>Я люблю нежные палитры, живые асимметричные формы и неожиданные детали. Но также собираю понятные подарочные букеты, монобукеты и свадебные работы — под повод, настроение и бюджет.</p>
+        <div class="about-points">
+          <span>Индивидуальная идея</span>
+          <span>Внимание к форме</span>
+          <span>Свежие цветы</span>
+          <span>Новосибирск</span>
+        </div>
+        <a class="text-link" href="https://t.me/Bloom_Boom_nsk" target="_blank" rel="noopener">Рассказать Лере о своём заказе →</a>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-panel reveal">
+        <p class="eyebrow">Связаться</p>
+        <h2 id="contact-title">Давайте придумаем<br>ваш букет</h2>
+        <p>Напишите, для кого нужен букет, какой повод, любимые оттенки и примерный бюджет. Даже нескольких слов достаточно, чтобы начать.</p>
+        <div class="contact-actions">
+          <a class="button button-primary" href="https://t.me/Bloom_Boom_nsk" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="button button-secondary" href="#portfolio">Ещё раз посмотреть работы</a>
+        </div>
+      </div>
+      <div class="contact-collage" aria-hidden="true">
+        <img class="contact-photo contact-photo-one" src="img/portfolio/mixed/powder-pink-bouquet.png" alt="" width="1254" height="1254" loading="lazy" data-parallax="0.035">
+        <img class="contact-photo contact-photo-two" src="img/portfolio/arrangements/pastel-flower-basket.png" alt="" width="1254" height="1254" loading="lazy" data-parallax="-0.025">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">✽</span>
+      <span class="brand-name">LeraFlo</span>
+    </a>
+    <p>Авторские букеты и композиции · Новосибирск</p>
+    <p>© <span id="current-year"></span> LeraFlo</p>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр фотографии">
+    <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
+    <button class="lightbox-arrow lightbox-prev" type="button" aria-label="Предыдущая фотография">‹</button>
+    <figure>
+      <img id="lightbox-image" src="" alt="">
+      <figcaption>
+        <small id="lightbox-category"></small>
+        <strong id="lightbox-title"></strong>
+      </figcaption>
+    </figure>
+    <button class="lightbox-arrow lightbox-next" type="button" aria-label="Следующая фотография">›</button>
+  </dialog>
+</body>
+</html>
