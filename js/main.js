@@ -178,14 +178,20 @@ function updateMotion() {
   const compactViewport = window.innerWidth <= 820;
   const parallaxItems = document.querySelectorAll('[data-parallax]');
   const imageItems = document.querySelectorAll('[data-parallax-image]');
-  const ribbon = document.querySelector('[data-scroll-track]');
+  const ribbons = document.querySelectorAll('[data-scroll-track]');
 
   parallaxItems.forEach((item) => {
     const speed = Number(item.dataset.parallax || 0);
     const rect = item.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
-    const max = compactViewport ? 16 : (item.classList.contains('hero-glow') ? 90 : 58);
-    const effectiveSpeed = compactViewport ? speed * 0.28 : speed;
+
+    if (compactViewport && item.classList.contains('contact-photo')) {
+      item.style.translate = '0 0';
+      return;
+    }
+
+    const max = compactViewport ? 9 : (item.classList.contains('hero-glow') ? 58 : 34);
+    const effectiveSpeed = compactViewport ? speed * 0.18 : speed * 0.72;
     const offset = Math.max(-max, Math.min(max, distance * effectiveSpeed));
     item.style.translate = `0 ${offset}px`;
   });
@@ -194,18 +200,27 @@ function updateMotion() {
     const speed = Number(image.dataset.parallaxImage || 0);
     const rect = image.getBoundingClientRect();
     const distance = rect.top + rect.height / 2 - viewportCenter;
-    const limit = compactViewport ? 12 : 34;
-    const effectiveSpeed = compactViewport ? speed * 0.3 : speed;
+    const limit = compactViewport ? 6 : (image.closest('.hero-frame') ? 11 : 20);
+    const effectiveSpeed = compactViewport ? speed * 0.16 : speed * 0.6;
     const shift = Math.max(-limit, Math.min(limit, distance * effectiveSpeed));
     image.style.setProperty('--image-shift', `${shift}px`);
   });
 
-  if (ribbon && !compactViewport) {
+  ribbons.forEach((ribbon) => {
     const rect = ribbon.parentElement.getBoundingClientRect();
     const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-    const shift = -Math.max(0, Math.min(1, progress)) * Math.min(window.innerWidth * .55, 720);
+    const normalized = Math.max(0, Math.min(1, progress));
+    const distanceFactor = Number(ribbon.dataset.scrollDistance || 1);
+    const direction = ribbon.dataset.scrollDirection === 'right' ? 'right' : 'left';
+    const maxShift = compactViewport
+      ? Math.min(window.innerWidth * 1.05, 390)
+      : Math.min(window.innerWidth * .55, 720);
+    const travel = maxShift * distanceFactor;
+    const shift = direction === 'right'
+      ? -travel + normalized * travel
+      : -normalized * travel;
     ribbon.style.transform = `translate3d(${shift}px, 0, 0)`;
-  }
+  });
 
   document.body.style.setProperty('--ambient-shift', `${Math.min(window.scrollY * .035, 110)}px`);
   motionFrame = 0;
